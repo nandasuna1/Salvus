@@ -114,3 +114,11 @@ span {
   font-size: medium;
   font-weight: 500;
 }
+
+
+/* home Page*/
+
+.homePage{
+  background-color: black;
+  height: 50hv;
+}

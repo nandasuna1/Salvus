@@ -1,0 +1,54 @@
+import React from 'react'
+import axios from "axios";
+import {useEffect, useState} from 'react'; // useEffect => allow us to run a funcion imetiatly when the page rerenders
+import { useHistory} from "react-router-dom"
+
+function Home() {
+
+    const [listaUsuarios, setListaUsuarios] = useState([]);
+    const [totalMed, setTotalMedicos] = useState();
+    const [totalEnfermeiros, setTotalEnfermeiros] = useState();
+    const [totalFono, setTotalFono] = useState();
+    const [totalTecEnf, setTotalTecEnf] = useState();
+
+    let history = useHistory();
+
+    useEffect(() => {
+      axios.get("http://localhost:3001/cadastro").then((response) => {
+        setListaUsuarios(response.data);
+      });
+
+      axios.get("http://localhost:3001/home").then((response) => {
+            setTotalMedicos(response.data.totalMed.count);
+            setTotalEnfermeiros(response.data.totalEnfermeiros.count)
+            setTotalFono(response.data.totalFono.count)
+            setTotalTecEnf(response.data.totalTecEnf.count)
+            //console.log(response.data.totalMed.count);
+      })
+    }, []);
+
+
+
+    return (
+        <div>
+        
+
+            <div>
+                totalMedicos: {totalMed}
+                <br />
+                total Enfermeiros: {totalEnfermeiros}
+                <br />
+                Total fono: {totalFono}
+                <br />
+                total tecEnf: {totalTecEnf}
+            </div>
+
+
+        </div>
+
+
+        
+    )
+}
+
+export default Home

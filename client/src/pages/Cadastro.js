@@ -2,13 +2,13 @@ import React from 'react'
 import {Formik, Form, Field, ErrorMessage} from 'formik';//formik para a criacao e validacao de formularios
 import * as Yup from 'yup'; //pra a validacao e tratamento de erros
 import axios from "axios"
+import {useHistory} from 'react-router-dom'
 
 
 
 function Cadastro() {
 
-
-
+    let history = useHistory();
     const initialValues = {
         nomePrimeiro: "",
         nomeSegundo: "", 
@@ -21,7 +21,7 @@ function Cadastro() {
         especialidade: "", 
         cidade: "", 
         estado: "",
-        deslocamento: null, 
+        deslocamento: 0, 
     };
 
     const validationSchema = Yup.object().shape({
@@ -30,7 +30,7 @@ function Cadastro() {
         nomeSegundo: Yup.string().min(3).max(15).required("Campo obrigatório"),
         username: Yup.string().min(3).max(15).required("Campo obrigatório"),
         email: Yup.string().email("Email inválido").required("Campo obrigatório"),
-        senha: Yup.string().min(3).max(15).required(),
+        senha: Yup.string().min(3).max(15).required("Campo obrigatório"),
         tel: Yup.string().min(11).max(11).required("Campo obrigatório"),
         genero: Yup.string().required("Campo obrigatório"),
         profissao: Yup.string().required("Campo obrigatório"),
@@ -40,11 +40,14 @@ function Cadastro() {
         deslocamento: Yup.number().min(1).max(100).required("Campo obrigatório"),
     })
 
-    const onSubmit = (data) => {
+    const onSubmit = (data, {resetForm}) => {
+        console.log("funciona");
         axios.post("http://localhost:3001/cadastro", data).then(() => {
             console.log(data);
-            console.log("funcionou");
+            resetForm({});
+            history.push("/")
         })
+        
     }
 
     return (
@@ -90,12 +93,12 @@ function Cadastro() {
                         placeholder="fulanoS123@email.com"
                         autoComplete = "off"/>
                     <label>Password: </label>
-                    <ErrorMessage name="password" component="span"/>
+                    <ErrorMessage name="senha" component="span"/>
                     <Field
                         id="inputCadastro"
                         type="password"
-                        name="password"
-                        placeholder="(your password)"
+                        name="senha"
+                        placeholder="suasenha123"
                         autoComplete = "off"/>
                     <label>Telefone: </label>
                     <ErrorMessage name="tel" component="span"/>
@@ -110,6 +113,7 @@ function Cadastro() {
                         name="genero"
                         placeholder="como se identifica"
                         autoComplete = "off">
+                        <option value="">Selecione uma opção</option>
                         <option value="Masc">Masc</option>
                         <option value="Fem">Fem</option>
                         <option value="NB">Prefiro não me identificar</option>
@@ -122,6 +126,7 @@ function Cadastro() {
                         name="profissao"
                         placeholder="sua profissão"
                         autoComplete = "off">
+                        <option value="">Selecione uma opção</option>
                         <option value="Medico">Medico</option>
                         <option value="Enfermeiro">Enfermeiro</option>
                         <option value="Fonoaudiologo">Fonoaudiologo</option>
@@ -148,6 +153,7 @@ function Cadastro() {
                         placeholder="seu estado"
                         id="inputCadastro"
                         autoComplete = "off">
+                        <option value="">Selecione uma opção</option>
                         <option value="AC">AC</option>
                         <option value="AL">AL</option>
                         <option value="AP">AP</option>
@@ -185,7 +191,7 @@ function Cadastro() {
                         placeholder="50km"
                         autoComplete = "off"/>
                         
-                        <button className="cadastroBtn" type="submit">Cadastrar</button>
+                        <button className="cadastroBtn" type="submit"  >Cadastrar</button>
                 </Form>
             </Formik>
         </div>
