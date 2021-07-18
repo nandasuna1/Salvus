@@ -119,6 +119,43 @@ span {
 /* home Page*/
 
 .homePage{
-  background-color: black;
-  height: 50hv;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(229, 192, 192);
+
+  width: 100%;
+  height: 90%;
+
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+.leftPart{
+  display: table;
+  width: 50%;
+
+  justify-items: center;
+  align-items: stretch;
+  background-color: rgb(243, 241, 241);
+}
+
+.profBox{
+  background-color: rgb(248, 248, 248);
+  padding: 0% 4%;
+  margin: 3%;
+  border-radius: 2%;
+  box-shadow: inset;
+
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+
+  font-size: large;
+
+}
+
+.profBox .profInfo{
+  margin: 2%;
+  font-size: xx-large;
+}
+
+

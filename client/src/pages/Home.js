@@ -30,10 +30,40 @@ function Home() {
 
 
     return (
-        <div>
+        <div className="homePage">
+
+            <div className="leftPart">
+                <div className="profBox">
+                    <p className="title">Total de Profissionais Cadastrados</p>
+                    <p className="profInfo">
+                        {totalEnfermeiros + totalFono + totalMed + totalTecEnf}
+                    </p>
+                    
+                    
+                </div>
+                <div className="profBox">
+                    <p className="title">Médicos</p>
+                    <p className="profInfo">{totalMed}</p>
+                </div>
+
+                <div className="profBox">
+                    <p className="title">Enfermeiros</p>
+                    <p className="profInfo">{totalEnfermeiros}</p>
+                </div>
+
+                <div className="profBox">
+                    <p className="title">Tecnicos de Enfermagem</p>
+                    <p className="profInfo">{totalTecEnf}</p>
+                </div>
+
+                <div className="profBox">
+                    <p className="title">Fonoudiologos</p>
+                    <p className="profInfo">{totalFono}</p>
+                </div>
+            </div>
         
 
-            <div>
+            <div className="rightPart">
                 totalMedicos: {totalMed}
                 <br />
                 total Enfermeiros: {totalEnfermeiros}
