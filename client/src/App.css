@@ -5,6 +5,8 @@
   align-items: center;
   flex-direction: column;
   background-color: rgb(223, 223, 223);
+  font-family: Arial, Helvetica, sans-serif;
+
 }
 
 body {
@@ -121,7 +123,7 @@ span {
 .homePage{
   display: flex;
   flex-direction: row;
-  background-color: rgb(229, 192, 192);
+
 
   width: 100%;
   height: 90%;
@@ -158,4 +160,76 @@ span {
   font-size: xx-large;
 }
 
+
+.rightPart {
+  
+  font-size: xx-large;
+  background-color: rgb(243, 241, 241);
+  width: 50%;
+}
+
+.rightPart .title{
+  display: flex;
+  align-self: center;
+  justify-self: center;
+
+}
+
+.chart{
+  width: 70%;
+}
+
+
+/* Login page */
+
+.loginPage{
+  display: flex;
+  flex-direction: row-reverse;
+
+  height: 100%;
+  width: 100%;
+
+}
+
+.logForm{
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  width: 50%;
+  padding: 3%;
+  margin: 5% 5%;
+  border-radius: 2%;
+
+  font-size: larger;
+
+  background-color: rgb(243, 243, 243);
+}
+
+.logForm input{
+  margin: 3% 0%;
+
+  height: 4vh;
+  width: 70%;
+  border: 2px solid rgb(87, 146, 69);
+  border-radius: 5px;
+  padding-left: 1%;
+}
+
+.salvusCall{
+  padding: 4%;
+  width: 50%;
+}
+
+.salvusCall .salvusText{
+  font-size: large;
+  text-align: center;
+}
+
+.salvusCall .salvusTitle{
+  font-size: larger;
+  font-weight: bold;
+  color: rgb(34, 218, 95);
+}
 

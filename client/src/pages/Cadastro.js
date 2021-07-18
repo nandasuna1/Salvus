@@ -45,7 +45,7 @@ function Cadastro() {
         axios.post("http://localhost:3001/cadastro", data).then(() => {
             console.log(data);
             resetForm({});
-            history.push("/")
+            history.push("/homepage")
         })
         
     }

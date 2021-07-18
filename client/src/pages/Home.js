@@ -2,6 +2,7 @@ import React from 'react'
 import axios from "axios";
 import {useEffect, useState} from 'react'; // useEffect => allow us to run a funcion imetiatly when the page rerenders
 import { useHistory} from "react-router-dom"
+import {Chart, Doughnut} from 'react-chartjs-2';
 
 function Home() {
 
@@ -10,6 +11,34 @@ function Home() {
     const [totalEnfermeiros, setTotalEnfermeiros] = useState();
     const [totalFono, setTotalFono] = useState();
     const [totalTecEnf, setTotalTecEnf] = useState();
+
+
+    
+    const state = {
+ 
+        labels: ['Medicos', 'Enfermeiros', 'Fonoaudiólogos','Tecnicos de Enfermage'],
+        datasets: [{
+            label: 'Profissionais cadastrados',
+            backgroundColor: [
+                '#79F14E',
+                '#55BB30',
+                '#32990E',
+                '#227903',
+            ],
+            hoverBackgroundColor: ['#43FF00'],
+            data: [totalMed, totalEnfermeiros, totalFono, totalTecEnf]
+        }]
+        ,
+        options: {
+        label: {
+            display: false,
+        }
+        
+        }
+    }
+    
+      
+
 
     let history = useHistory();
 
@@ -64,13 +93,10 @@ function Home() {
         
 
             <div className="rightPart">
-                totalMedicos: {totalMed}
-                <br />
-                total Enfermeiros: {totalEnfermeiros}
-                <br />
-                Total fono: {totalFono}
-                <br />
-                total tecEnf: {totalTecEnf}
+                <p className="title">Profissionais Cadastrados</p>
+                <div className="chart">
+                    <Doughnut data={state} />
+                </div>
             </div>
 
 

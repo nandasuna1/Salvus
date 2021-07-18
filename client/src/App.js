@@ -10,13 +10,13 @@ function App() {
        <Router> 
         <div className="navbar">
           <Link to="/homepage">Home Page</Link>
-          <Link to="/login">Login</Link>
+          <Link to="/">Login</Link>
           <Link to="/cadastro">Cadastro</Link>
         </div>
         <Switch>
           <Route path="/homepage" exact component={Home}/>
           <Route path="/cadastro" exact component={Cadastro}/>
-          <Route path="/login" exact component={Login}/>
+          <Route path="/" exact component={Login}/>
         </Switch>
       </Router>
     </div>
