@@ -52,13 +52,11 @@ function Cadastro() {
 
     return (
         <div className="cadastroDiv">
-            <div className="imagesCadastro">
-                <img className="imgCadastro" src="https://image.flaticon.com/icons/png/512/4561/4561054.png" alt="" />
-                <img className="imgCadastro" src="https://image.flaticon.com/icons/png/512/4561/4561058.png" alt="" />
-            </div>
                 
+               
                 <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
                 <Form className="formContainer">
+                <img src="https://www.salvus.me/_next/static/images/COMMON-salvus_logo_x-7ea80535a910c67245458d6e722fdefb.svg" alt="" />
                 <h1>Cadastre-se já!</h1>
 
                     <p className="cabecario">Dados Pessoais</p>

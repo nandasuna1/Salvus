@@ -9,7 +9,6 @@ function App() {
     <div className="App">
        <Router> 
         <div className="navbar">
-          <Link to="/homepage">Home Page</Link>
           <Link to="/">Login</Link>
           <Link to="/cadastro">Cadastro</Link>
         </div>
