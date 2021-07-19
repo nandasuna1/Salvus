@@ -4,7 +4,12 @@ import Home from "./pages/Home"
 import Login from './pages/Login';
 import Cadastro from './pages/Cadastro';
 
+
 function App() {
+
+
+
+
   return (
     <div className="App">
        <Router> 
@@ -13,7 +18,7 @@ function App() {
           <Link to="/cadastro">Cadastro</Link>
         </div>
         <Switch>
-          <Route path="/homepage" exact component={Home}/>
+          <Route path="/homepage/:id" exact component={Home}/>
           <Route path="/cadastro" exact component={Cadastro}/>
           <Route path="/" exact component={Login}/>
         </Switch>

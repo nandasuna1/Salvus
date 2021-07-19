@@ -2,13 +2,15 @@ import React from 'react'
 import {Formik, Form, Field, ErrorMessage} from 'formik';//formik para a criacao e validacao de formularios
 import * as Yup from 'yup'; //pra a validacao e tratamento de erros
 import axios from "axios"
-import {useHistory} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 
 
 
 function Cadastro() {
 
     let history = useHistory();
+    let {id} = useParams();
+
     const initialValues = {
         nomePrimeiro: "",
         nomeSegundo: "", 
@@ -41,11 +43,9 @@ function Cadastro() {
     })
 
     const onSubmit = (data, {resetForm}) => {
-        console.log("funciona");
         axios.post("http://localhost:3001/cadastro", data).then(() => {
-            console.log(data);
             resetForm({});
-            history.push("/homepage")
+            history.push("/");
         })
         
     }

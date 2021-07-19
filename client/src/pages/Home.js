@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from "axios";
 import {useEffect, useState} from 'react'; // useEffect => allow us to run a funcion imetiatly when the page rerenders
-import { useHistory} from "react-router-dom"
-import {Chart, Doughnut} from 'react-chartjs-2';
+import { useHistory, useParams, Redirect} from "react-router-dom"
+import { Doughnut} from 'react-chartjs-2';
 
 function Home() {
 
@@ -11,7 +11,36 @@ function Home() {
     const [totalEnfermeiros, setTotalEnfermeiros] = useState();
     const [totalFono, setTotalFono] = useState();
     const [totalTecEnf, setTotalTecEnf] = useState();
+    const [user, setUser] = useState();
+    let {id} = useParams();
+    let history = useHistory();
+    
 
+    useEffect(() => {
+        axios.get(`http://localhost:3001/cadastro/${id}`, {headers: {
+            accessToken: localStorage.getItem("accessToken")
+          }}).then((response) => {
+              if(response.data.error){
+
+                setUser(response.data.username)
+                return history.push("/")
+              }
+
+       });
+
+        axios.get("http://localhost:3001/cadastro").then((response) => {
+            setListaUsuarios(response.data);
+          });
+    
+          axios.get("http://localhost:3001/home").then((response) => {
+                setTotalMedicos(response.data.totalMed.count);
+                setTotalEnfermeiros(response.data.totalEnfermeiros.count)
+                setTotalFono(response.data.totalFono.count)
+                setTotalTecEnf(response.data.totalTecEnf.count)
+    
+        })
+
+    }, []);
 
     
     const state = {
@@ -37,38 +66,20 @@ function Home() {
         }
     }
     
-      
-
-
-    let history = useHistory();
-
-    useEffect(() => {
-      axios.get("http://localhost:3001/cadastro").then((response) => {
-        setListaUsuarios(response.data);
-      });
-
-      axios.get("http://localhost:3001/home").then((response) => {
-            setTotalMedicos(response.data.totalMed.count);
-            setTotalEnfermeiros(response.data.totalEnfermeiros.count)
-            setTotalFono(response.data.totalFono.count)
-            setTotalTecEnf(response.data.totalTecEnf.count)
-            //console.log(response.data.totalMed.count);
-      })
-    }, []);
-
-
 
     return (
         <div className="homePage">
 
+            
+
             <div className="leftPart">
+            <h1>Olá {user} !</h1>
                 <div className="profBox">
                     <p className="title">Total de Profissionais Cadastrados</p>
                     <p className="profInfo">
                         {totalEnfermeiros + totalFono + totalMed + totalTecEnf}
                     </p>
-                    
-                    
+
                 </div>
                 <div className="profBox">
                     <p className="title">Médicos</p>
@@ -93,6 +104,7 @@ function Home() {
         
 
             <div className="rightPart">
+                <p></p>
                 <p className="title">Profissionais Cadastrados</p>
                 <div className="chart">
                     <Doughnut data={state} />

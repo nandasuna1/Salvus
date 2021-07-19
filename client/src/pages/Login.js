@@ -9,14 +9,17 @@ function Login() {
 
     let history = useHistory();
 
+    
+
     const login = () => {
         const data = {usuario: usuario, senha: senha}
         axios.post("http://localhost:3001/cadastro/login", data).then((response) => {
-            if(response.data.error){
+            if(response.data.error ){
+                console.log(response)
                 alert(response.data.error)
             }else{
-                localStorage.setItem("accessToken", response.data);
-                history.push("/homepage");
+                localStorage.setItem("accessToken", response.data.token);
+                history.push(`/homepage/${response.data.id}`);
             }
         })
 

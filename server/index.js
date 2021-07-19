@@ -1,11 +1,15 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const db = require("./models");
+const cookieParser = require("cookie-parser");
 
+
+app.use(cookieParser())
 app.use(express.json());
 app.use(cors());
 
-const db = require("./models");
+
 
 //Routers para fazer os requestes
 const cadastroRouter = require('./routes/Cadastro');
@@ -14,8 +18,8 @@ app.use("/cadastro", cadastroRouter);
 const homeRouter = require('./routes/Home');
 app.use("/home", homeRouter);
 
-const profissionaisRouter = require('./routes/Profissionais');
-app.use("/perfil", profissionaisRouter);
+const perfilRouter = require('./routes/Perfil');
+app.use("/perfil", perfilRouter);
 
 
 
