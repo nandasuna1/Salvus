@@ -3,7 +3,7 @@ const router = express.Router()
 const { Users } = require("../models")
 const bcrypt = require("bcrypt");
 const {sign} = require('jsonwebtoken')
-const {createToken , validateToken} = require('../JWT')
+const { validateToken} = require('../JWT')
 
 
 
@@ -67,17 +67,17 @@ router.post("/login", async (req, res) => {
 
 })
 
-router.get("/login", (req, res) => {
-    console.log(res);
-    res.json(req.user);
-})
 
 router.get("/:id", validateToken, async (req, res) => {
     const id = req.params.id
     const usuario = await Users.findByPk(id);
-    console.log(res.json(usuario))
+    //console.log(res.json(usuario))
     res.json({username:usuario.username, id: usuario.id});
 });
+
+router.get("/autenticado", validateToken, (req, res) => {
+    res.json(req.user);
+})
 
 
 

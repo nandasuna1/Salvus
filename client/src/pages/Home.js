@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from "axios";
 import {useEffect, useState} from 'react'; // useEffect => allow us to run a funcion imetiatly when the page rerenders
-import { useHistory, useParams, Redirect} from "react-router-dom"
+import { useHistory, useParams} from "react-router-dom"
 import { Doughnut} from 'react-chartjs-2';
 
 function Home() {
@@ -21,15 +21,16 @@ function Home() {
             accessToken: localStorage.getItem("accessToken")
           }}).then((response) => {
               if(response.data.error){
-
-                setUser(response.data.username)
                 return history.push("/")
-              }
-
+            }else{
+                setUser(response.data.username)
+            }
        });
+
 
         axios.get("http://localhost:3001/cadastro").then((response) => {
             setListaUsuarios(response.data);
+
           });
     
           axios.get("http://localhost:3001/home").then((response) => {
@@ -41,6 +42,11 @@ function Home() {
         })
 
     }, []);
+
+    const logout = () => {
+        localStorage.removeItem("accessToken");
+        history.push("/")
+      }
 
     
     const state = {
@@ -73,7 +79,8 @@ function Home() {
             
 
             <div className="leftPart">
-            <h1>Olá {user} !</h1>
+            <h1 className="saudacoes">Olá {user} !</h1>
+            <button className="sairBtn" onClick={logout}>Sair</button>
                 <div className="profBox">
                     <p className="title">Total de Profissionais Cadastrados</p>
                     <p className="profInfo">

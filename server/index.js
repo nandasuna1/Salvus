@@ -18,8 +18,6 @@ app.use("/cadastro", cadastroRouter);
 const homeRouter = require('./routes/Home');
 app.use("/home", homeRouter);
 
-const perfilRouter = require('./routes/Perfil');
-app.use("/perfil", perfilRouter);
 
 
 

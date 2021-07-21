@@ -4,8 +4,6 @@ const { Users } = require('../models')
 
 
 
-//sequelize semre usa async e await pra ter certeza que
-//os dados estao sendo inseridos na tabela
 router.get("/", async (req, res) => {
     totalMed = await Users.findAndCountAll({
        where: {

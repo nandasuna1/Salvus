@@ -12,7 +12,6 @@ const createToken = (user) => {
 const validateToken = (req, res, next) => {
 
     const accessToken = req.header("accessToken");
-
     if(!accessToken) return res.json({error: "Usuario não autenticado"});
 
     try{
