@@ -32,6 +32,7 @@ function Home() {
 
         axios.get("http://localhost:3001/cadastro").then((response) => {
             setListaUsuarios(response.data);
+            //fazer algo dps
 
           });
     
@@ -43,7 +44,7 @@ function Home() {
     
         })
 
-    }, []);
+    }, [id, history]);
 
     const logout = () => {
         localStorage.removeItem("accessToken");
@@ -57,8 +58,9 @@ function Home() {
     }
 
     
+
+    
     const state = {
- 
         labels: ['Medicos', 'Enfermeiros', 'Fonoaudiólogos','Tecnicos de Enfermage'],
         datasets: [{
             label: 'Profissionais cadastrados',
@@ -73,9 +75,9 @@ function Home() {
         }]
         ,
         options: {
-        label: {
-            display: false,
-        }
+            label: {
+                display: false,
+            }
         
         }
     }
@@ -94,6 +96,7 @@ function Home() {
                     deleteMe(userId); logout()
                 }}>Excluir conta</button>
             </div>
+            
                 <div className="profBox">
                     <p className="title">Total de Profissionais Cadastrados</p>
                     <p className="profInfo">

@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { Users } = require('../models')
 const { validateToken} = require('../JWT')
-
+const bcrypt = require("bcrypt");
 
 
 router.get("/", async (req, res) => {
@@ -46,6 +46,8 @@ router.delete("/delete/:id", async (req, res) => {
         },
     });
 })
+
+
 
 
 module.exports = router;
