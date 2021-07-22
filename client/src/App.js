@@ -12,7 +12,7 @@ function App() {
 
          <Router>
           <div className="navbar">
-            <a href="https://www.salvus.me" target="_blank"><img src="https://www.salvus.me/_next/static/images/COMMON-salvus_logo_x-7ea80535a910c67245458d6e722fdefb.svg" alt="" /></a>
+            <a href="https://www.salvus.me" target="_blank" rel="noreferrer"><img src="https://www.salvus.me/_next/static/images/COMMON-salvus_logo_x-7ea80535a910c67245458d6e722fdefb.svg" alt="" /></a>
     
           </div>
           <Switch>

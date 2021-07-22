@@ -12,6 +12,7 @@ function Home() {
     const [totalFono, setTotalFono] = useState();
     const [totalTecEnf, setTotalTecEnf] = useState();
     const [user, setUser] = useState();
+    const [userId, setUserID] = useState(0);
     let {id} = useParams();
     let history = useHistory();
     
@@ -24,6 +25,7 @@ function Home() {
                 return history.push("/")
             }else{
                 setUser(response.data.username)
+                setUserID(response.data.id)
             }
        });
 
@@ -46,7 +48,13 @@ function Home() {
     const logout = () => {
         localStorage.removeItem("accessToken");
         history.push("/")
-      }
+    }
+
+    const deleteMe = (id) => {
+        axios.delete(`http://localhost:3001/home/delete/${id}`, 
+        {headears: {accessToken: localStorage.getItem("accessToken")},   
+        })
+    }
 
     
     const state = {
@@ -80,7 +88,12 @@ function Home() {
 
             <div className="leftPart">
             <h1 className="saudacoes">Olá {user} !</h1>
-            <button className="sairBtn" onClick={logout}>Sair</button>
+            <div className="homeBtn">
+                <button className="sairBtn" onClick={logout}>Sair</button>
+                <button className="sairBtn" onClick={() => {
+                    deleteMe(userId); logout()
+                }}>Excluir conta</button>
+            </div>
                 <div className="profBox">
                     <p className="title">Total de Profissionais Cadastrados</p>
                     <p className="profInfo">

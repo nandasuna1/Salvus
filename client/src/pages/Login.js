@@ -50,7 +50,7 @@ function Login() {
             <div className="salvusCall">
                 <img src="https://www.salvus.me/_next/static/images/COMMON-salvus_logo_x-7ea80535a910c67245458d6e722fdefb.svg" alt="Salvus logo"  width="30%"/>
                 <p className="salvusBemVindos">Bem Vindos!</p>
-                <p className="salvusTitle">Para <a>maximizar</a> o valor e eficiência geradas pelas soluções, 
+                <p className="salvusTitle">Para maximizar o valor e eficiência geradas pelas soluções, 
                 focamos em conectar e levar benefícios para todos atores do ecossistema de saúde.</p>
                 
                 <p className="salvusText">

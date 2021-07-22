@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { Users } = require('../models')
+const { validateToken} = require('../JWT')
 
 
 
@@ -36,6 +37,15 @@ router.get("/", async (req, res) => {
     res.json(todos);
 
 });
+
+router.delete("/delete/:id", async (req, res) => {
+    const id = req.params.id;
+    Users.destroy({
+        where: {
+            id: id,
+        },
+    });
+})
 
 
 module.exports = router;
