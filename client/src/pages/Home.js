@@ -57,7 +57,9 @@ function Home() {
         })
     }
 
-    
+    const verCadastrados = (id) => {
+        history.push("/lista")
+    }
 
     
     const state = {
@@ -81,6 +83,7 @@ function Home() {
         
         }
     }
+
     
 
     return (
