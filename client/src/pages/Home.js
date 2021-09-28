@@ -90,7 +90,7 @@ function Home() {
         <div className="homePage">
 
             
-
+            <button>ta pesteee</button>
             <div className="leftPart">
             <h1 className="saudacoes">Olá {user} !</h1>
             <div className="homeBtn">
