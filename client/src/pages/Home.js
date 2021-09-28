@@ -84,8 +84,8 @@ function Home() {
         }
     }
 
-    
 
+    
     return (
         <div className="homePage">
 
@@ -143,6 +143,7 @@ function Home() {
 
         
     )
+
 }
 
 export default Home

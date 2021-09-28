@@ -19,7 +19,9 @@ function Login() {
                 alert(response.data.error)
             }else{
                 localStorage.setItem("accessToken", response.data.token);
-                history.push(`/homepage/${response.data.id}`);
+                if(localStorage.getItem){
+                    history.push(`/homepage/${response.data.id}`);
+                }
             }
         })
 
